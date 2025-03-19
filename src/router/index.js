@@ -1,20 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import AllRecipes from '@/views/AllRecipes.vue'
-import FavoriteRecipes from '@/views/FavoriteRecipes.vue'
+import AllRecipesView from '../views/AllRecipesView.vue'
+import FavouriteRecipesView from '../views/FavouriteRecipesView.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'AllRecipes',
-      component: AllRecipes
+      component: AllRecipesView
     },
     {
-      path: '/favorites',
-      name: 'FavoriteRecipes',
-      component: FavoriteRecipes
-    }
+      path: '/favourite',
+      component: FavouriteRecipesView
+    },
   ]
 })
 

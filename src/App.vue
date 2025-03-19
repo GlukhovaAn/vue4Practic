@@ -1,33 +1,76 @@
-<script setup>
-import { usePostStore } from "./store/postStore";
-import PostItem from "./components/PostItem.vue";
-import PostInput from "./components/PostInput.vue";
-
-const postStore = usePostStore();
-</script>
-
 <template>
-  <div class="app-container">
-    <PostInput @addPost="postStore.addPost" />
-
-    <PostItem
-      v-for="post in postStore.posts"
-      :key="post.id"
-      :post="post"
-      :onDeletePost="postStore.deletePost"
-      :onAddComment="postStore.addComment"
-      :onDeleteComment="postStore.deleteComment"
-    />
+  <div class="header">
+    <h1 class="headerText">Recipes</h1>
+    <div class="links">
+      <router-link to="/">All recipes</router-link>
+      <router-link to="/favourite">Favorite</router-link>
+    </div>
   </div>
+  <router-view></router-view>
 </template>
-
+<script setup>
+import { RouterLink, RouterView } from "vue-router";
+</script>
 <style>
-.app-container {
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-weight: 400;
+  font-size: 48px;
+  margin-left: 50px;
+}
+p {
+  font-weight: 700;
+  font-size: 16px;
+}
+sup {
+  font-weight: 400;
+  font-size: 12px;
+}
+a{
+  text-decoration: none;
+  color: #000000;
+  width: 148px;
+  height: 47px;
+  border-radius: 25px;
+  background-color: #FF4F04;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  background-color: #dff3ff;
-  min-height: 100vh;
-  padding: 20px;
+  justify-content: center;
+}
+label{
+  font-weight: 700;
+  font-size: 16px;
+  color: #414141;
+}
+a:hover{
+  transition: 0.15s;
+  transform: scale(1.05);
+  color: white;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  height: 158px;
+  background-color: #FFA032;
+}
+.headerText{
+  width: 20vw;
+  height: 100px;
+  background-color: #FF4F04;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.links {
+  width: 22vw;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 50px;
 }
 </style>
